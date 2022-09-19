@@ -75,11 +75,11 @@ void CADXL362Accel::SetSensorIndex(int value)
 bool CADXL362Accel::InitializeSPIDevice()
 {
 	// example m_device_name = "/dev/spidev1.0"
-	bool error = m_spi_ctrl.OpenDevice("/dev/spidev1.0");
-	TempCalibrate(20);
+	bool error = m_spi_ctrl.OpenDevice("/dev/spidev2.1");
+	//TempCalibrate(20);
 	m_calibrated = true;
 	m_sensor_fail = false;
-	this->m_show_uncalibrated_data = 0;
+	this->m_show_uncalibrated_data = 1;
 	m_x_accel_old = 0; 
 	m_y_accel_old = 0;
 	m_z_accel_old = 0;
@@ -211,8 +211,8 @@ uint8_t CADXL362Accel::ReadRegister(int reg_index)
 	ret = ioctl(m_spi_ctrl.m_fd, SPI_IOC_MESSAGE(1), &xfer);
   
 	// For debugging
-	//printf("SPI result: %d\n", ret);
-	//printf("Data: %02X - %02X  - %02X\n", rxBuffer[0], rxBuffer[1], rxBuffer[2]);
+	printf("SPI result: %d\n", ret);
+	printf("Data: %02X - %02X  - %02X\n", rxBuffer[0], rxBuffer[1], rxBuffer[2]);
 
 	if (ret < 1)
 	{

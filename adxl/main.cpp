@@ -17,7 +17,7 @@ int main()
 		while (1)
 		{
 			p_accel->AccelRead(&x_data[0], &y_data[0], &z_data[0], false); // This can set the accel inactive if error reading
-			cout << "X " << x_data[0] << " Y " << y_data[0] << " Z " << z_data[0] << endl;
+			//cout << "X " << x_data[0] << " Y " << y_data[0] << " Z " << z_data[0] << endl;
 		}
 
 	}
